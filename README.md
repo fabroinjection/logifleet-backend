@@ -14,7 +14,7 @@ The platform is intended for internal administrative use only. It implements JWT
 - ✅ Vehicle and fleet management
 - ✅ Route and driver assignment
 - ✅ Attendance tracking
-- ✅ JWT-based authentication
+- ✅ ECMAScript modules support
 - ✅ Modular folder structure
 - ✅ Configurable environments with `.env` files
 - ✅ ESLint and Prettier configured for clean code
@@ -23,12 +23,12 @@ The platform is intended for internal administrative use only. It implements JWT
 
 ## 🛠 Tech Stack
 
-| Tech         | Purpose                          |
-|--------------|----------------------------------|
-| Node.js      | JavaScript runtime               |
-| Express.js   | Web framework                    |
-| MongoDB      | NoSQL database (Atlas-hosted)    |
-| dotenv       | Environment variable management  |
-| jsonwebtoken | Auth via signed tokens (JWT)     |
-| ESLint       | Code linting                     |
-| Prettier     | Code formatting                  |
+| Tech       | Purpose                         |
+| ---------- | ------------------------------- |
+| Node.js    | JavaScript runtime              |
+| Express.js | Web framework                   |
+| MongoDB    | NoSQL database (Atlas-hosted)   |
+| dotenv     | Environment variable management |
+| ESLint     | Code linting                    |
+| Prettier   | Code formatting                 |
+| Cross-env  | Environment variable management |

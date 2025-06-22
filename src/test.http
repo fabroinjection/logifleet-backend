@@ -1,0 +1,43 @@
+### Crear un chofer
+POST http://localhost:3000/api/choferes
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "edad": 35,
+  "dni": "12345678",
+  "telefono": "1123456789",
+  "licencia": "B"
+}
+
+### Obtener todos los choferes
+GET http://localhost:3000/api/choferes
+
+### Obtener todos los choferes activos
+GET http://localhost:3000/api/choferes/activos
+
+### Obtener todos los choferes inactivos
+GET http://localhost:3000/api/choferes/inactivos
+
+### Obtener chofer por ID
+GET http://localhost:3000/api/choferes/685870a19a29a76b1bd6c362
+
+### Actualizar chofer por ID
+PUT http://localhost:3000/api/choferes/685870a19a29a76b1bd6c362
+Content-Type: application/json
+
+{
+  "nombre": "Juan Manuel",
+  "apellido": "Pérez",
+  "edad": 36,
+  "telefono": "1134567890",
+  "licencia": "C",
+  "dni": "12345678"
+}
+
+### Eliminar chofer (soft delete)
+DELETE http://localhost:3000/api/choferes/685870a19a29a76b1bd6c362
+
+### Filtro por estado y licencia
+GET http://localhost:3000/api/choferes/filter?status=activo&licencia=B

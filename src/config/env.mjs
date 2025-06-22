@@ -14,11 +14,4 @@ const envPath = path.resolve(__dirname, `../../.env.${env}`);
 // Cargar el archivo
 dotenv.config({ path: envPath });
 
-export const {
-  PORT,
-  JWT_SECRET,
-  DB_HOST,
-  DB_USER,
-  DB_PASSWORD,
-  DB_NAME,
-} = process.env;
+export const { PORT, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
