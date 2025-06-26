@@ -11,7 +11,7 @@ export default [
             'dist',
             'src/config/env.mjs',
             'src/schemas/choferes.joi.mjs',
-            'src/tests/test.http',
+            'src/tests/*',
             'README.md',
         ],
         languageOptions: {

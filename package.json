@@ -4,15 +4,12 @@
     "main": "server.mjs",
     "type": "module",
     "scripts": {
-        "test": "cross-env NODE_ENV=test jest --verbose --silent --coverage",
+        "test": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
         "dev": "cross-env NODE_ENV=development node --watch server.mjs",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --check .",
         "format:fix": "prettier --write ."
-    },
-    "jest": {
-        "testEnvironment": "node"
     },
     "keywords": [],
     "author": "",
@@ -23,8 +20,10 @@
         "cross-env": "^7.0.3",
         "dotenv": "^16.5.0",
         "express": "^5.1.0",
+        "jest": "^30.0.2",
         "joi": "^17.13.3",
-        "mongoose": "^8.16.0"
+        "mongoose": "^8.16.0",
+        "supertest": "^7.1.1"
     },
     "devDependencies": {
         "@eslint/js": "^9.29.0",
