@@ -23,12 +23,13 @@ The platform is intended for internal administrative use only. It implements JWT
 
 ## 🛠 Tech Stack
 
-| Tech       | Purpose                         |
-| ---------- | ------------------------------- |
-| Node.js    | JavaScript runtime              |
-| Express.js | Web framework                   |
-| MongoDB    | NoSQL database (Atlas-hosted)   |
-| dotenv     | Environment variable management |
-| ESLint     | Code linting                    |
-| Prettier   | Code formatting                 |
-| Cross-env  | Environment variable management |
+| Tech              | Purpose                         |
+| ----------------- | ------------------------------- |
+| Node.js           | JavaScript runtime              |
+| Express.js        | Web framework                   |
+| MongoDB           | NoSQL database (Atlas-hosted)   |
+| dotenv            | Environment variable management |
+| ESLint            | Code linting                    |
+| Prettier          | Code formatting                 |
+| Cross-env         | Environment variable management |
+| Jest/Supertest    | Testing/TDD                     |

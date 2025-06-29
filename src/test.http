@@ -8,7 +8,7 @@ Content-Type: application/json
   "edad": 35,
   "dni": "12345679",
   "telefono": "1123456789",
-  "licencia": "Z"
+  "licencia": "A"
 }
 
 ### Obtener todos los choferes
@@ -41,3 +41,56 @@ DELETE http://localhost:3000/api/choferes/685870a19a29a76b1bd6c362
 
 ### Filtro por estado y licencia
 GET http://localhost:3000/api/choferes/filter?status=activo&licencia=B
+
+### Crear un vehículo
+POST http://localhost:3000/api/vehiculos
+Content-Type: application/json
+
+{
+  "patente": "AA 111 AA",
+  "nro_chasis": "1HGCM82633A123456",
+  "nro_motor": "1234567890",
+  "marca": "Renault",
+  "modelo": "Kangoo",
+  "anio": 2020,
+  "tipo": "Camioneta",
+  "capacidad": 5
+}
+
+### Obtener todos los vehículos
+GET http://localhost:3000/api/vehiculos
+
+### Obtener todos los vehiculos activos
+GET http://localhost:3000/api/vehiculos/activos
+
+### Obtener todos los vehiculos inactivos
+GET http://localhost:3000/api/vehiculos/inactivos
+
+### Obtener vehículo por ID
+GET http://localhost:3000/api/vehiculos/68617b65a4cba98a0ca4f471
+
+### Actualizar vehículo por ID
+PUT http://localhost:3000/api/vehiculos/68617b65a4cba98a0ca4f471
+Content-Type: application/json
+
+{
+  "patente": "AA 111 AA",
+  "nro_chasis": "1HGCM82633A123456",
+  "nro_motor": "1234567890",
+  "marca": "Renault",
+  "modelo": "Kangoo",
+  "anio": 2021,
+  "tipo": "Camioneta",
+  "capacidad": 5
+}
+
+### Eliminar vehículo (soft delete)
+DELETE http://localhost:3000/api/vehiculos/68617b65a4cba98a0ca4f471
+
+### Asignar chofer a vehículo
+PATCH http://localhost:3000/api/vehiculos/68617b65a4cba98a0ca4f471/asignar-chofer
+Content-Type: application/json
+
+{
+  "chofer": "6861804e3d56010ef7ed0d7a"
+}
