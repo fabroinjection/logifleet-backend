@@ -55,7 +55,7 @@ const vehiculosSchema = new mongoose.Schema({
     },
     chofer: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'choferes'
+        ref: 'choferes',
     },
     delete: {
         type: Boolean,

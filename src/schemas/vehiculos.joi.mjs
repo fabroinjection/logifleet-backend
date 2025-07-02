@@ -17,5 +17,5 @@ export const vehiculoSchema = Joi.object({
     tipo: Joi.string().valid('Camion', 'Camioneta', 'Auto', 'Moto').required(),
     capacidad: Joi.number().min(1).required(),
     anio: Joi.number().min(2000).max(new Date().getFullYear()).required(),
-    chofer: Joi.string().length(24).hex()
+    chofer: Joi.string().length(24).hex(),
 });

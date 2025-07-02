@@ -76,9 +76,9 @@ export function createVehiculoController(vehiculoRepository, choferRepository) {
                 const chofer = await choferRepository.findById(value.chofer);
                 if (!chofer) {
                     return res.status(404).json({ error: 'Chofer no encontrado' });
-                }    
+                }
             }
-            
+
             try {
                 const vehiculo = await vehiculoRepository.create(value);
                 return res.status(201).json(vehiculo);
@@ -112,7 +112,7 @@ export function createVehiculoController(vehiculoRepository, choferRepository) {
                 const chofer = await choferRepository.findById(value.chofer);
                 if (!chofer) {
                     return res.status(404).json({ error: 'Chofer no encontrado' });
-                }    
+                }
             }
             try {
                 const vehiculo = await vehiculoRepository.update(req.params.id, value);
@@ -147,7 +147,7 @@ export function createVehiculoController(vehiculoRepository, choferRepository) {
             } catch (error) {
                 return res.status(500).json({ error: error.message });
             }
-        }, 
+        },
 
         async deactivate(req, res) {
             try {
@@ -190,10 +190,9 @@ export function createVehiculoController(vehiculoRepository, choferRepository) {
                     return res.status(404).json({ error: 'Vehículo no encontrado' });
                 }
                 return res.json(vehiculo);
-            }
-            catch (error) {
+            } catch (error) {
                 return res.status(500).json({ error: error.message });
             }
-        }
+        },
     };
 }

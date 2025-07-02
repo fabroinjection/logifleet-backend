@@ -4,27 +4,31 @@ export class VehiculoRepository {
     }
 
     async findAll() {
-        return await this.Vehiculo.find({ delete: false });
+        return await this.Vehiculo.find({ delete: false }).populate('chofer');
     }
 
     async findByFilter(filter = {}) {
-        return await this.Vehiculo.find({ delete: false, ...filter });
+        return await this.Vehiculo.find({ delete: false, ...filter }).populate('chofer');
     }
 
     async findById(id) {
-        return await this.Vehiculo.findOne({ _id: id, delete: false });
+        return await this.Vehiculo.findOne({ _id: id, delete: false }).populate('chofer');
     }
-    
+
     async findByNroMotor(nroMotor) {
-        return await this.Vehiculo.findOne({ nro_motor: nroMotor, delete: false });
+        return await this.Vehiculo.findOne({ nro_motor: nroMotor, delete: false }).populate(
+            'chofer'
+        );
     }
 
     async findByPatente(patente) {
-        return await this.Vehiculo.findOne({ patente: patente, delete: false });
+        return await this.Vehiculo.findOne({ patente: patente, delete: false }).populate('chofer');
     }
 
     async findByNroChasis(nroChasis) {
-        return await this.Vehiculo.findOne({ nro_chasis: nroChasis, delete: false });
+        return await this.Vehiculo.findOne({ nro_chasis: nroChasis, delete: false }).populate(
+            'chofer'
+        );
     }
 
     async create(data) {
@@ -62,5 +66,4 @@ export class VehiculoRepository {
         }
         return await vehiculo.updateOne({ delete: true });
     }
-    
 }
