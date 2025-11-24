@@ -3,8 +3,6 @@ export function rateLimit(maxLimit = 20, ex = 60) {
         const redis = req.app.locals.redisClient;
 
         if (redis) {
-            console.log(redis.incr);
-            console.log(req.ip);
             const key = `rate:${req.ip}`;
             const count = await redis.incr(key);
 
