@@ -4,7 +4,21 @@ export function createChoferController(choferRepository) {
     return {
         async getAll(req, res) {
             try {
+                const redis = req.app.locals.redisClient;
+                const cacheKey = 'choferes:all';
+
+                if (redis) {
+                    const cached = await redis.get(cacheKey);
+                    if (cached) {
+                        return res.json(JSON.parse(cached));
+                    }
+                }
+
                 const choferes = await choferRepository.findAll();
+                if (redis) {
+                    await redis.set(cacheKey, JSON.stringify(choferes), { EX: 60 });
+                }
+
                 return res.json(choferes);
             } catch (error) {
                 return res.status(500).json({ error: error.message });
@@ -52,12 +66,16 @@ export function createChoferController(choferRepository) {
         },
 
         async create(req, res) {
+            const redis = req.app.locals.redisClient;
             const { error, value } = choferSchema.validate(req.body);
             if (error) {
                 return res.status(400).json({ error: error.details[0].message });
             }
             try {
                 const chofer = await choferRepository.create(value);
+                if (redis) {
+                    await redis.del('choferes:all');
+                }
                 return res.status(201).json(chofer);
             } catch (error) {
                 return res.status(500).json({ error: error.message });
@@ -65,6 +83,7 @@ export function createChoferController(choferRepository) {
         },
 
         async update(req, res) {
+            const redis = req.app.locals.redisClient;
             const { error, value } = choferSchema.validate(req.body);
             if (error) {
                 return res.status(400).json({ error: error.details[0].message });
@@ -74,6 +93,9 @@ export function createChoferController(choferRepository) {
                 if (!chofer) {
                     return res.status(404).json({ error: 'Chofer no encontrado' });
                 }
+                if (redis) {
+                    await redis.del('choferes:all');
+                }
                 return res.json(value);
             } catch (error) {
                 return res.status(500).json({ error: error.message });
@@ -81,10 +103,14 @@ export function createChoferController(choferRepository) {
         },
 
         async activate(req, res) {
+            const redis = req.app.locals.redisClient;
             try {
                 const chofer = await choferRepository.activate(req.params.id);
                 if (!chofer) {
                     return res.status(404).json({ error: 'Chofer no encontrado' });
+                }
+                if (redis) {
+                    await redis.del('choferes:all');
                 }
                 return res.json(chofer);
             } catch (error) {
@@ -93,10 +119,14 @@ export function createChoferController(choferRepository) {
         },
 
         async deactivate(req, res) {
+            const redis = req.app.locals.redisClient;
             try {
                 const chofer = await choferRepository.deactivate(req.params.id);
                 if (!chofer) {
                     return res.status(404).json({ error: 'Chofer no encontrado' });
+                }
+                if (redis) {
+                    await redis.del('choferes:all');
                 }
                 return res.json(chofer);
             } catch (error) {
@@ -105,10 +135,14 @@ export function createChoferController(choferRepository) {
         },
 
         async delete(req, res) {
+            const redis = req.app.locals.redisClient;
             try {
                 const chofer = await choferRepository.delete(req.params.id);
                 if (!chofer) {
                     return res.status(404).json({ error: 'Chofer no encontrado' });
+                }
+                if (redis) {
+                    await redis.del('choferes:all');
                 }
                 return res.json(chofer);
             } catch (error) {
